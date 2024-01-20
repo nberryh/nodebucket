@@ -2,7 +2,7 @@
 
 const { MongoClient } = require("mongodb");
 
-const MONGO_URL = "mongodb+srv://nodebucket_user:s3cret@cluster0.wmphxtw.mongodb.net/nodebucket?retryWrites=true&w=majority";
+const MONGO_URL = "mongodb+srv://nodebucket_user:s3crets@cluster0.wmphxtw.mongodb.net/nodebucket?retryWrites=true&w=majority"
 
 const mongo = async(operations, next) => {
   try {
