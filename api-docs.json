@@ -1,0 +1,76 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "1.0.0",
+    "title": "Nodebucket API",
+    "description": "API documentation for nodebucket app"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api-docs/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Employees",
+      "description": "The Employees API"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/employees/{empId}": {
+      "get": {
+        "tags": ["Employees"],
+        "summary": "Find employee by ID",
+        "description": "Finds an employee by their employee ID (empId)",
+        "parameters": [
+          {
+            "name": "empId",
+            "in": "path",
+            "description": "Employee ID",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee record found",
+            "content": {
+             "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "empId": {
+                    "type": "number",
+                    "example": 1007
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "example": "Thomas"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "example": "Raith"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request"
+        },
+        "404": {
+          "description": "Not found"
+        },
+        "500": {
+          "description": "Server Error"
+        }
+      }
+    }
+  }
+}}
