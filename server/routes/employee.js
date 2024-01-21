@@ -18,7 +18,7 @@ router.get("/:empId", (req, res, next) => {
     }
 
     mongo(async db => {
-      const employee = await db.collection("employees").findOne ({empId});
+      const employee = await db.collection("employees").findOne({empId});
 
       if (!employee) {
         const err = new Error("Unable to find employee with empId" + empId);
