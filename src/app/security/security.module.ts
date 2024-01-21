@@ -1,7 +1,7 @@
 /**
  * Title: security.module.ts
- * Author: Professor Krasso
- * Date: 8/5/23
+ * Author: Nolan Berryhill
+ * Date: 1/24/2024
 */
 
 // imports statements
@@ -15,6 +15,7 @@ import { SecurityRoutingModule } from './security-routing.module';
 import { SecurityComponent } from './security.component';
 import { SigninComponent } from './signin/signin.component';
 
+// @NgModule assign declarations and imports
 @NgModule({
   declarations: [
     SecurityComponent,
@@ -29,4 +30,6 @@ import { SigninComponent } from './signin/signin.component';
     HttpClientModule
   ]
 })
+
+// Exports SecurityModule
 export class SecurityModule { }

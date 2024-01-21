@@ -1,0 +1,44 @@
+
+/**
+  Title: custom-theme.scss
+  Author: Nolan Berryhill
+  Date: 1/21/2024
+  Description: Styles for nodebucket
+*/
+
+/**
+  Imports items for use
+*/
+@use '@angular/material' as mat;
+@include mat.core();
+
+/**
+ Different syntax for material version 17.0.0 and above
+*/
+$dark-primary: mat.define-palette(mat.$blue-palette);
+$dark-accent: mat.define-palette(mat.$green-palette, 400);
+$dark-warn: mat.define-palette(mat.$red-palette, 400);
+
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+    warn: $dark-warn,
+  )
+));
+
+
+@include mat.all-component-themes($dark-theme);
+
+
+
+@include mat.all-component-themes($dark-theme);
+
+
+
+@include mat.all-component-themes($dark-theme);
+
+
+
+@include mat.all-component-themes($dark-theme);
+

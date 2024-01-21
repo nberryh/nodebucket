@@ -1,13 +1,14 @@
 /**
  * Title: nav.component.ts
  * Author: Nolan Berryhill
- * Date: 1/17/204
+ * Date: 1/21/204
  */
 
 // imports statements
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 
+// Exports AppUser
 export interface AppUser {
   fullName: string;
 }
@@ -16,6 +17,8 @@ export interface AppUser {
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
+
+// Exports NavComponent
 export class NavComponent {
   appUser: AppUser
   isLoggedIn: boolean;

@@ -1,7 +1,7 @@
 /**
  * Title: security-routing.module.ts
- * Author: Professor Krasso
- * Date: 8/5/23
+ * Author: Nolan Berryhill
+ * Date: 1/21/2024
  */
 
 // imports statements
@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SecurityComponent } from './security.component';
 import { SigninComponent } from './signin/signin.component';
 
+// Creates route for nav bar
 const routes: Routes = [
   {
     path: '',
@@ -24,8 +25,11 @@ const routes: Routes = [
   }
 ];
 
+// @NgModule is given imports and exports
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
+
+// exports SecurityRoutingModule
 export class SecurityRoutingModule { }

@@ -1,9 +1,22 @@
+/**
+====================================================
+; Title:  mongo.js
+; Author: Nolan Berryhill
+; Date:   1/21/2024
+; Description: Javascript to merge mongo database
+;===================================================
+*/
+
+// Make strict
 "use strict";
 
+// Valuable is MongoClient
 const { MongoClient } = require("mongodb");
 
+// Link to mongodb
 const MONGO_URL = "mongodb+srv://nodebucket_user:s3crets@cluster0.wmphxtw.mongodb.net/nodebucket?retryWrites=true&w=majority"
 
+// Allows for code to link up with mongo database
 const mongo = async(operations, next) => {
   try {
     console.log("Connecting to db...");
@@ -31,4 +44,5 @@ const mongo = async(operations, next) => {
   }
 };
 
+// Exports Mongo
 module.exports = { mongo };

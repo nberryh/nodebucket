@@ -1,7 +1,15 @@
+/**
+ * Title: auth.guard.ts
+ * Author: Nolan Berryhill
+ * Date: 1/21/2024
+ */
+
+// imports statements
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
+// export authGuard equation to access site
 export const authGuard: CanActivateFn = (route, state) => {
   const cookie = inject(CookieService) //inject CookieService
 

@@ -1,6 +1,13 @@
+<!-- Name: Nolan Berryhill
+File: nav.component.html
+Description: HTML file for the nav component
+Date: 1/21/2024-->
+
+<!-- Opening to nav bar with a link for nodebucket -->
 <nav class="ps-3 navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
   <a routerLink="/" class="navbar-brand">NodeBucket</a>
 
+  <!-- Button with a span within -->
   <button
     Class="navbar-toggler"
     type="button"
@@ -13,22 +20,32 @@
   <span class="navbar-toggler-icon"></span>
   </button>
 
+  <!-- Opening to div to create nav bar -->
   <div class="collapse navbar-collapse" id="navbarResponsive">
+    <!-- Opening list -->
     <ul class="navbar-nav ms-auto p-2">
+
+      <!-- List item within nav bar for home -->
       <li class="navbar-item">
         <a routerLink="/home" class="nav-link">Home</a>
       </li>
+
+      <!-- List item within nav bar for About Us -->
       <li class="navbar-item">
         <a routerLink="#" class="nav-link">About Us</a>
       </li>
+
+      <!-- List item within nav bar for Contact us -->
       <li class="navbar-item">
         <a routerLink="#" class="nav-link">Contact Us</a>
       </li>
 
+      <!-- List item within nav bar to transfer to Sign In Page -->
       <li *ngIf="!isLoggedIn">
         <a routerLink="/security/signin" class="nav-link">Sign In</a>
       </li>
 
+      <!-- Drop down option after successful log in -->
       <li *ngIf="isLoggedIn" class="nav-item dropdown">
         <a href="#"
           Class="nav-link pe-3"
@@ -44,6 +61,7 @@
           <li class="dropdown-item">
             Signed in as {{ appUser.fullName }}
           </li>
+          <!-- Option to sign out -->
           <li>
             <a (click)="signout()" class="dropdown-item link">Sign Out</a>
           </li>

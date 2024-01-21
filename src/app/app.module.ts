@@ -1,7 +1,7 @@
 /**
  * Title: app.module.ts
- * Author: Professor Krasso
- * Date: 8/5/23
+ * Author: Nolan Berryhill
+ * Date: 1/21/2024
  */
 
 // imports statements
@@ -16,7 +16,9 @@ import { BaseLayoutComponent } from './layouts/base-layout/base-layout.component
 import { NavComponent } from './layouts/nav/nav.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// @NgModule assign declarations and imports with bootstrap value
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +31,12 @@ import { TasksComponent } from './tasks/tasks.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
+// Export AppModule
 export class AppModule { }

@@ -1,7 +1,7 @@
 /**
  * Title: app-routing.module.ts
- * Author: Professor Krasso
- * Date: 8/5/23
+ * Author: Nolan Berryhill
+ * Date: 1/21/2024
  */
 
 // imports statements

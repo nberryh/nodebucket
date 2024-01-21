@@ -1,30 +1,42 @@
+/**
+ * Title: signin.component.ts
+ * Author: Nolan Berryhill
+ * Date: 1/21/2024
+ */
+
+// imports statements
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { SecurityService } from '../security.service';
 
+// Exports SessionUser
 export interface SessionUser {
   empId: number;
   firstName: string;
   lastName: string;
 }
 
+// at Components
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
 
+// Exports SigninComponent
 export class SigninComponent {
   errorMessage: string;
   sessionUser: SessionUser;
   isLoading: boolean = false;
 
+  // signinForm value
   signinForm = this.fb.group({
     empId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]
   });
 
+  // constructor make private values
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -36,6 +48,7 @@ export class SigninComponent {
     this.errorMessage = '';
   }
 
+  // signin equations
   signin() {
     this.isLoading = true;
     console.log("signinForm", this.signinForm.value);

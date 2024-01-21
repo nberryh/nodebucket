@@ -1,9 +1,21 @@
+/**
+====================================================
+; Title:  employee.js
+; Author: Nolan Berryhill
+; Date:   1/21/2024
+; Description: Code to use mongo database successfully
+;===================================================
+*/
+
+// Make strict
 "use strict";
 
+// Gives const a value
 const express = require("express");
 const router = express.Router();
 const { mongo } = require("../utils/mongo");
 
+// How the router connects with mongo
 router.get("/:empId", (req, res, next) => {
   try{
     let { empId } = req.params;
@@ -36,4 +48,5 @@ router.get("/:empId", (req, res, next) => {
   }
 })
 
+// Export router
 module.exports = router;
