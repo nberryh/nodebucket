@@ -2,7 +2,7 @@
 ====================================================
 ; Title:  mongo.js
 ; Author: Nolan Berryhill
-; Date:   1/21/2024
+; Date:   1/22/2024
 ; Description: Javascript to merge mongo database
 ;===================================================
 */
@@ -12,9 +12,10 @@
 
 // Valuable is MongoClient
 const { MongoClient } = require("mongodb");
+const config = require('./config');
 
 // Link to mongodb
-const MONGO_URL = "mongodb+srv://nodebucket_user:s3crets@cluster0.wmphxtw.mongodb.net/nodebucket?retryWrites=true&w=majority"
+const MONGO_URL = config.dbUrl;
 
 // Allows for code to link up with mongo database
 const mongo = async(operations, next) => {
@@ -26,7 +27,7 @@ const mongo = async(operations, next) => {
       useUnifiedTopology: true,
     });
 
-    const db = client.db("nodebucket");
+    const db = client.db(config.dbname);
     console.log("Connected to db.");
 
     await operations(db);
