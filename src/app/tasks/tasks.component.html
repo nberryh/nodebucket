@@ -1,7 +1,15 @@
+<!-- Name: Nolan Berryhill
+File: tasks.component.html
+Description: HTML file for the tasks component
+Date: 1/24/2024-->
+
+<!-- Opening divs with classes and second header -->
 <div class="container-fluid pt-2" style="min-height: 600px;">
 
+  <!-- Heading of my tasks -->
   <h1 class="text-center">My Tasks</h1>
 
+  <!-- Messages for error and success -->
   <div class="row justify-content-center pt-4">
     <div class="col-sm-10 col-md-8 col-lg-6">
 
@@ -19,6 +27,7 @@
     </div>
   </div>
 
+  <!-- To enter information to the input area -->
   <div class="row justify-content-center pt-4">
     <div class="col-sm-10 col-md-8 col-lg-6">
       <form [formGroup]="newTaskForm" (ngSubmit)="addTask();">
@@ -27,7 +36,7 @@
           <button class="btn btn-outline-secondary" type="submit" [disabled]="!newTaskForm.valid" id="btnAdd">Add</button>
         </div>
 
-
+        <!-- Warning to add a task -->
         <div *ngIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('required')">
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>Please enter a task!</strong>
@@ -35,6 +44,7 @@
           </div>
         </div>
 
+        <!-- Warning to have 3 characters for the entry-->
         <div *ngIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('minlength')">
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>The task field must be at least 3 characters long!</strong>
@@ -42,6 +52,7 @@
           </div>
         </div>
 
+        <!-- Warning to have les 50 characters for the entry -->
         <div *ngIf="newTaskForm.controls['text'].touched && newTaskForm.controls['text'].hasError('maxlength')">
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>The task field must be at most 50 characters long!</strong>
@@ -62,6 +73,7 @@
 
         <div class="container">
 
+          <!-- Beginning status of todo list -->
           <div *ngIf="todo.length === 0">
             <div class="alert alert-info">
               No tasks to do yet!
@@ -105,6 +117,7 @@
 
         <div class="container">
 
+          <!-- Beginning status of done list -->
           <div *ngIf="todo.length === 0">
             <div class="alert alert-info">
               No done task yet!

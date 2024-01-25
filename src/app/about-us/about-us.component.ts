@@ -7,11 +7,14 @@
 // imports statements
 import { Component } from '@angular/core';
 
+// Component with selector, templateUrl, styleUrls
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
   styleUrls: ['./about-us.component.css']
 })
+
+// Export AboutUsComponent
 export class AboutUsComponent {
 
 }

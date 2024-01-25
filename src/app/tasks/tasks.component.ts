@@ -1,3 +1,10 @@
+/**
+ * Title: tasks.component.ts
+ * Author: Nolan Berryhill
+ * Date: 1/24/2024
+ */
+
+// imports statements
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { TaskService } from '../shared/task.service';
@@ -5,12 +12,17 @@ import { Employee } from '../shared/employee.interface';
 import { Item } from '../shared/item.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+// Component with selector, templateUrl, and styleUrls
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
+
+// Export TasksComponent
 export class TasksComponent {
+
+  // Give values to const
   employee: Employee;
   empId: number;
   todo: Item[];
@@ -18,10 +30,12 @@ export class TasksComponent {
   errorMessage: string;
   successMessage: string;
 
+  // newTaskForm format for text
   newTaskForm: FormGroup = this.fb.group({
     text: [null, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])]
   });
 
+  // Constructor with privates
   constructor(private cookieService: CookieService, private taskService: TaskService, private fb: FormBuilder) {
     this.employee = {} as Employee;
     this.todo = [];
@@ -31,6 +45,7 @@ export class TasksComponent {
 
     this.empId = parseInt(this.cookieService.get('session_user'), 10);
 
+    // Equation for taskService with getTasks
     this.taskService.getTasks(this.empId).subscribe({
       next: (res: any) => {
         console.log('Employee', res);
@@ -51,6 +66,7 @@ export class TasksComponent {
     })
   }
 
+  // addTask to add task to task page
   addTask() {
     const text = this.newTaskForm.controls['text'].value;
 
@@ -77,6 +93,7 @@ export class TasksComponent {
     });
   }
 
+  // Timeout the notification warning
   hideAlert() {
     setTimeout(() => {
       this.errorMessage = '';
