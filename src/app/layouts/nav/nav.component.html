@@ -37,7 +37,7 @@ Date: 1/21/2024-->
 
       <!-- List item within nav bar for Contact us -->
       <li class="navbar-item">
-        <a routerLink="contact-us" class="nav-link">Contact Us</a>
+        <a routerLink="/contact-us" class="nav-link">Contact Us</a>
       </li>
 
       <!-- List item within nav bar to transfer to Sign In Page -->
@@ -60,6 +60,9 @@ Date: 1/21/2024-->
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <li class="dropdown-item">
             Signed in as {{ appUser.fullName }}
+          </li>
+          <li>
+            <a routerLink="/task-management" class="dropdown-item link">Task</a>
           </li>
           <!-- Option to sign out -->
           <li>
