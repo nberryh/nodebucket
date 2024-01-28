@@ -2,8 +2,8 @@
 ====================================================
 ; Title:  employee.js
 ; Author: Nolan Berryhill
-; Date:   1/22/2024
-; Description: Code to use mongo database successfully
+; Date:   1/28/2024
+; Description: Code to use mongo database and swagger successfully
 ;===================================================
 */
 
@@ -18,6 +18,32 @@ const Ajv = require('ajv');
 const { ObjectId } = require('mongodb');
 
 const ajv = new Ajv();
+
+// Swagger input for findEmployeeById
+/**
+ * findEmployeeById
+ * @swagger
+ * /api/employees/{empId}:
+ *   get:
+ *     summary: Find employee by ID
+ *     description: Finds employee details by providing their ID
+ *     parameters:
+ *       - in: path
+ *         name: empId
+ *         required: true
+ *         description: Employee ID
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       '200':
+ *         description: Successful response with the employee ID.
+ *       '400':
+ *         description: Bad request, invalid employee ID.
+ *       '404':
+ *         description: Employee not found.
+ *       '500':
+ *         description: Internal server error.
+ */
 
 // How to get empId
 router.get("/:empId", (req, res, next) => {
@@ -51,6 +77,37 @@ router.get("/:empId", (req, res, next) => {
     next(err);
   }
 })
+
+// Swagger input for get feature of task
+/**
+ * @swagger
+ * /api/employees/{empId}/tasks:
+ *   get:
+ *     summary: Finds all tasks with employee ID
+ *     description: Retrieves tasks with employee ID
+ *     parameters:
+ *       - in: path
+ *         name: empId
+ *         required: true
+ *         description: Employee ID
+ *         schema:
+ *           type: integer
+ *       - in: query  // Correcting the parameter type to "query"
+ *         name: tasks
+ *         required: true
+ *         description: tasks
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Successful response with the employee data.
+ *       '400':
+ *         description: Bad request.
+ *       '404':
+ *         description: Task not found.
+ *       '500':
+ *         description: Internal server error.
+ */
 
 // How to get empId and their tasks
 router.get('/:empId/tasks', (req, res, next) => {
@@ -89,6 +146,40 @@ router.get('/:empId/tasks', (req, res, next) => {
     next(err);
   }
 })
+
+// swagger input for Post features for task
+/**
+ * @swagger
+ * /api/employees/{empId}/tasks:
+ *   post:
+ *     summary: Creates a task for employee
+ *     description: Create a task for employee ID.
+ *     parameters:
+ *       - in: path
+ *         name: empId
+ *         required: true
+ *         description: Employee ID
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               text:
+ *                 type: string
+ *     responses:
+ *       '201':
+ *         description: Task created.
+ *       '400':
+ *         description: Bad request.
+ *       '404':
+ *         description: Task not found.
+ *       '500':
+ *         description: Internal server error.
+ */
 
 //ajv schema validation
 const taskSchema = {

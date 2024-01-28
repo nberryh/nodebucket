@@ -27,9 +27,8 @@ Date: 1/21/2024-->
 
             <!-- Button of submit -->
             <div class="d-grid">
-              <button type="submit" class="btn btn-dark">
-                <span *ngIf="isLoading">Sign In</span>
-
+              <button type="submit" class="btn btn-dark" style="padding: 5%;">
+                  <span *ngIf="isLoading">Sign In</span>
                 <!-- Icon of isLoading to allow time for security to give access to webpage -->
                 <div *ngIf="isLoading">
                   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
