@@ -31,6 +31,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FourzerofourComponent } from './fourzerofour/fourzerofour.component';
 
 // @NgModule assign declarations and imports with bootstrap value
 @NgModule({
@@ -42,7 +43,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     FooterComponent,
     TasksComponent,
     AboutUsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    FourzerofourComponent
   ],
   imports: [
     BrowserModule,
