@@ -1,7 +1,7 @@
 /**
  * Title: app.module.ts
  * Author: Nolan Berryhill
- * Date: 1/24/2024
+ * Date: 1/31/2024
  */
 
 // imports statements
@@ -31,7 +31,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import { FourzerofourComponent } from './fourzerofour/fourzerofour.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 // @NgModule assign declarations and imports with bootstrap value
 @NgModule({
@@ -43,8 +43,7 @@ import { FourzerofourComponent } from './fourzerofour/fourzerofour.component';
     FooterComponent,
     TasksComponent,
     AboutUsComponent,
-    ContactUsComponent,
-    FourzerofourComponent
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +63,8 @@ import { FourzerofourComponent } from './fourzerofour/fourzerofour.component';
     HttpClientModule,
     MatProgressSpinnerModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

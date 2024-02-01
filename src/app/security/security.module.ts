@@ -14,12 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { SecurityRoutingModule } from './security-routing.module';
 import { SecurityComponent } from './security.component';
 import { SigninComponent } from './signin/signin.component';
+import { FourzerofourComponent } from '../fourzerofour/fourzerofour.component';
 
 // @NgModule assign declarations and imports
 @NgModule({
   declarations: [
     SecurityComponent,
-    SigninComponent
+    SigninComponent,
+    FourzerofourComponent
   ],
   imports: [
     CommonModule,

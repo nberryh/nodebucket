@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SecurityComponent } from './security.component';
 import { SigninComponent } from './signin/signin.component';
+import { FourzerofourComponent } from '../fourzerofour/fourzerofour.component';
 
 // Creates route for nav bar
 const routes: Routes = [
@@ -20,6 +21,11 @@ const routes: Routes = [
         path: 'signin',
         component: SigninComponent,
         title: 'Nodebucket: Sign In'
+      },
+      {
+        path: '**',
+        component: FourzerofourComponent,
+        title: 'Not Found'
       }
     ]
   }
