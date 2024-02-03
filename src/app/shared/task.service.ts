@@ -7,6 +7,7 @@
 // imports statements
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Item } from './item.interface';
 
 // injectable of provideIn
 @Injectable({

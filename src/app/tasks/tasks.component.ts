@@ -1,7 +1,7 @@
 /**
  * Title: tasks.component.ts
  * Author: Nolan Berryhill
- * Date: 1/24/2024
+ * Date: 2/03/2024
  */
 
 // imports statements
@@ -176,14 +176,14 @@ export class TasksComponent {
 
   updateTaskList(empId: number, todo: Item[], done: Item[]) {
     this.taskService.updateTask(empId, todo, done).subscribe({
-      next: (res: any) => (
+      next: (res: any) => {
         console.log('Task updated successfully')
-      ),
-      errors (err) => (
-        console.log('error', err) // Log the error to the console
-        this.errorMessage = err.message // Set the error message
-        this.hideAlert() // Call the hideAlert() function
-      )
+      },
+      error: (err) => {
+        console.log('error', err) //log the error message to the console
+        this.errorMessage = err.message //set the error message
+        this.hideAlert() //call the hideAlert() function
+      }
     })
   }
 

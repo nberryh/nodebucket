@@ -1,7 +1,7 @@
 <!-- Name: Nolan Berryhill
 File: tasks.component.html
 Description: HTML file for the tasks component
-Date: 1/24/2024-->
+Date: 2/03/2024-->
 
 <!-- Opening divs with classes and second header -->
 <div class="container-fluid pt-2" style="min-height: 600px;">
@@ -72,7 +72,7 @@ Date: 1/24/2024-->
 
         <div class="container task-column"
         cdkDropList
-        #doneList="cdkDropList"
+        #todoList="cdkDropList"
         [cdkDropListData]="todo"
         [cdkDropListConnectedTo]="[doneList]"
         (cdkDropListDropped)="drop($event)">
@@ -123,11 +123,11 @@ Date: 1/24/2024-->
       <div class="p-3 border bg-light">
 
         <div class="container task-column"
-          cdkDropList
-          #doneList="cdkDropList"
-          [cdkDropListData]="done"
-          [cdkDropListConnectedTo]="[todoList]"
-          (cdkDropListDropped)="drop($event)">
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList]"
+        (cdkDropListDropped)="drop($event)">
 
           <!-- Beginning status of done list -->
           <div *ngIf="todo.length === 0">
