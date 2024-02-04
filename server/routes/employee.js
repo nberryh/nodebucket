@@ -294,27 +294,81 @@ router.post('/:empId/tasks', (req, res, next) =>{
   }
 });
 
-// API to update task
-router.put('./:empId/tasks', (req, res, next) => {
+/**
+ * updateTask
+ * @swagger
+ * /api/employees/{empId}/tasks:
+ *   put:
+ *     summary: Update tasks for an employee
+ *     description: Update task
+ *     parameters:
+ *       - in: path
+ *         name: empId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Employee ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - todo
+ *               - done
+ *             properties:
+ *               todo:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     _id:
+ *                       type: string
+ *                     text:
+ *                       type: string
+ *               done:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     _id:
+ *                       type: string
+ *                     text:
+ *                       type: string
+ *     responses:
+ *       '204':
+ *         description: Tasks updated successfully
+ *       '400':
+ *         description: Bad Request
+ *       '404':
+ *         description: Employee not found
+ *       '500':
+ *         description: Internal Server Error
+ */
+
+// Update tasks API
+router.put('/:empId/tasks', (req, res, next) => {
   try {
-    let { empId } = req.params;
+    let { empId } = req.params; // Makes a empID needed
     empId = parseInt(empId, 10);
-    console.log('empId', empId);
+    console.log('empId', empId); // Log empId to the console
 
     //empId validation
     if (isNaN(empId)) {
       const err = new Error('input must be a number');
-      err.status = 400,
+      err.status = 400;
       console.error('err', err);
       next(err);
       return;
     }
 
     const validator = ajv.compile(tasksSchema);
-    const isValid = validator(req.body); // validate the request body
+    // validate the request body
+    const isValid = validator(req.body);
 
     //req.body validation
-    if(!isValid) {
+    if (!isValid) {
       const err = new Error('Bad Request');
       err.status = 400;
       err.errors = validator.errors;
@@ -323,11 +377,12 @@ router.put('./:empId/tasks', (req, res, next) => {
       return; // return to exit the function
     }
 
+    // Instructions for code to change mongo database
     mongo(async db => {
-      const employee = await db.collection('employees').findOne({ empId});
+      const employee = await db.collection('employees').findOne({ empId });
 
       // if the employee is not found
-      if(!employee) {
+      if (!employee) {
         const err = new Error('Unable to find employee with empId ' + empId);
         err.status = 404;
         console.error('err', err);
@@ -349,13 +404,45 @@ router.put('./:empId/tasks', (req, res, next) => {
         return;
       }
 
+      // Send a success response with a 204 status code.
       res.status(204).send();
     }, next);
   } catch (err) {
-    console.error('err', err);
+    console.log('err', err);
     next(err);
   }
 });
+
+/**
+  * deleteTask
+  * @swagger
+  * /api/employees/{empId}/tasks/{taskId}:
+  *   delete:
+  *     summary: Delete a task for an employee
+  *     description: Delete Task
+  *     parameters:
+  *       - in: path
+  *         name: empId
+  *         required: true
+  *         schema:
+  *           type: integer
+  *         description: Employee ID
+  *       - in: path
+  *         name: taskId
+  *         required: true
+  *         schema:
+  *           type: string
+  *         description: Task ID
+  *     responses:
+  *       '204':
+  *         description: Task deleted successfully
+  *       '400':
+  *         description: Bad Request
+  *       '404':
+  *         description: Employee or task not found
+  *       '500':
+  *         description: Internal Server Error
+  */
 
 // API to delete a task
 router.delete('/:empId/tasks/:taskId', (req, res, next) => {
@@ -373,7 +460,7 @@ router.delete('/:empId/tasks/:taskId', (req, res, next) => {
     }
 
     mongo(async db => {
-      let employee = await db.collection('employee').findOne({ empId });;
+      let employee = await db.collection('employees').findOne({ empId });;
 
       // if the employee is not found
       if (!employee) {

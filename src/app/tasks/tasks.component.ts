@@ -96,36 +96,36 @@ export class TasksComponent {
 
   // delete task
   deleteTask(taskId: string) {
-    console.log('Task item: ${taskId}')
+    console.log(`Task item: ${taskId}`)
 
     // confirm dialog
-    if(!confirm('Are you sure you want to delete this task?')) {
-      return
+    if (!confirm('Are you sure you want to delete this task?')) {
+      return;
     }
 
-    // Call the deleteTask() function on the taskService and subscribe to the observable and pass in the empId and taskId
+    // Call the deleteTask() function on the taskService to subscribe to the observable and pass in the empId and taskId
     this.taskService.deleteTask(this.empId, taskId).subscribe({
-      //If the task is deleted successfully, remove it from the task array
+      // If the task is deleted successfully, remove it from the task array
       next: (res: any) => {
-        console.log('Task deleted with id', taskId)
+        console.log('Task deleted with id, taskId')
 
-        if (!this.todo) this.todo = [] // if the todo array is null set it to an empty array
-        if (!this.done) this.done = [] // if the done array is null set it to an empty array
+        if (!this.todo) this.todo = [] // if the todo array is null, set it to an empty array
+        if (!this.done) this.done = [] // if the done array is null, set it to an empty array
 
-        // we are doing this because we do not know if the task is in the todo or done array
-        this.todo = this.todo.filter(t => t._id.toString() !== taskId) // Filter the task array and remove the deleted task
-        this.done = this.done.filter(t => t._id.toString() !== taskId) // Filter the task array and remove the deleted task
+        // We are doing this because we do not know if the task is in the todo or done array
+        this.todo = this.todo.filter(t => t._id.toString() !== taskId) // Filter the array and remove the deleted task
+        this.done = this.done.filter(t => t._id.toString() !== taskId) // Filter the array and remove the deleted task
 
         this.successMessage = 'Task deleted successfully!' // Set the success message
 
         this.hideAlert() // Call the hideAlert() function
       },
-      // If there is an error, log it to the console and set the error message
+      // if there is an error, lof it to the console and set the error message
       error: (err) => {
         console.log('error', err)
         this.errorMessage = err.message
 
-        this.hideAlert() // Call the hideAlert() function
+        this.hideAlert() // calls the hideAlert() function
       }
     })
   }
@@ -133,15 +133,15 @@ export class TasksComponent {
   // drop event for the todo and done lists using the cdkDragDrop directive from the drag and drop module
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
-      // If the item is dropped in the same container, move it to the new index
+      // if the item is dropped in the same container, move it to the new index
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)
 
-      console.log('Moved item in array', event.container.data) // Log the new array to the console
+      console.log('Moved item in array', event.container.data) //log the new array to the console
 
-      // Call the updateTaskList() function and pass in the empId, todo and done arrays
+      // call the updateTaskList() function and pass in the empId, todo and done arrays
       this.updateTaskList(this.empId, this.todo, this.done)
     } else {
-      // If the item is dropped in a different container, move it to the new container
+      // if the item is dropped in a different container, move it to the new container
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
@@ -149,13 +149,11 @@ export class TasksComponent {
         event.currentIndex,
       )
 
-
       console.log('Moved item in array', event.container.data) // Log the new array to the console
 
       // Call the updateTaskList() function and pass in the empId, todo and done arrays
       this.updateTaskList(this.empId, this.todo, this.done)
     }
-
   }
 
   // Timeout the notification warning
@@ -174,15 +172,17 @@ export class TasksComponent {
   * @returns void
   */
 
+  // update a task list for the application
   updateTaskList(empId: number, todo: Item[], done: Item[]) {
     this.taskService.updateTask(empId, todo, done).subscribe({
       next: (res: any) => {
         console.log('Task updated successfully')
       },
+      // call out error
       error: (err) => {
-        console.log('error', err) //log the error message to the console
-        this.errorMessage = err.message //set the error message
-        this.hideAlert() //call the hideAlert() function
+        console.log('error', err) // log the error message to the console
+        this.errorMessage = err.message
+        this.hideAlert() // call the hideAlert() function
       }
     })
   }
