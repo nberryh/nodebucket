@@ -1,7 +1,7 @@
 <!-- Name: Nolan Berryhill
 File: home.component.html
 Description: HTML file for the home component
-Date: 1/28/2024-->
+Date: 02/05/2024-->
 
 <!-- Body for the home details -->
 <div class="container-fluid">
@@ -12,17 +12,17 @@ Date: 1/28/2024-->
     </div>
   </div>
 
-  <!-- Images for home page -->
-  <div fxLayout="column">
-    <p style="text-align: center">
-      <img style="width: 25%;" src="https://github.com/nberryh/nodebucket/blob/main/Photo/homeImage.png?raw=true">
+  <div id="grid-container">
+    <!-- Images for home page -->
+    <div class="grid-item">
 
-      <br>
+        <img src="https://github.com/nberryh/nodebucket/blob/main/Photo/homeImage.png?raw=true">
+    </div>
 
-      <img style="width: 25%; height: 5%;" src="https://github.com/nberryh/nodebucket/blob/main/Photo/hometwoImage.png?raw=true">
-    </p>
+    <div class="grid-item">
+      <img src="https://github.com/nberryh/nodebucket/blob/main/Photo/hometwoImage.png?raw=true">
+    </div>
   </div>
-
   <!-- route to go to test security -->
   <a routerLink="/security">Test Security Module</a>
 </div>

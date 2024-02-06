@@ -1,0 +1,23 @@
+/**
+    Title: home.component.css
+    Author: Nolan Berryhill
+    Date: 05 February 2024
+    Description: CSS styles for home component
+*/
+
+/**
+Styles for grids
+*/
+
+#grid-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 15%;
+}
+
+
+.grid-item {
+  padding: 20px;
+  margin: 10px;
+  border-radius: 30px;
+}

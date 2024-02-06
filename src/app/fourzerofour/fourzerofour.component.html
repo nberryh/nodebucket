@@ -1,27 +1,26 @@
 <!--
   Title: fourzerofour.component.html
   Author: Nolan Berryhill
-  Date: 02/03/2024
+  Date: 02/05/2024
   Description: 404 page for nodebucket
 -->
 
-<!-- Opening of divs for the about page -->
-<div fxLayout="row wrap" style="padding: 10%,">
+<!-- Opening of divs for the 404 page -->
+<div fxLayout="row wrap" style="padding: 25%,">
   <div fxFlex>
-    <div fxLayout=column>
-      <div>
-        <!-- First About Us photo -->
+    <div id="grid-container">
+      <div class="grid-item">
+        <!-- 404 photo -->
         <img src="https://github.com/nberryh/nodebucket/blob/main/Photo/404%20error.png?raw=true" style="max-width: 5000px;" alt="Error">
       </div>
-    </div>
-    </div>
-    <div fxFlex>
-      <!-- Header -->
-      <h1 style="text-align: center;">404</h1>
-      <!-- About paragraph for customers to read about company -->
-      <p style="text-align: center;">
-        This page shall not pass!!!!!!!! Please look upon your http for the error!!!
-      </p>
+      <div class="grid-item">
+        <!-- Header -->
+        <h1 style="text-align: center;">404</h1>
+        <!-- 404 warning for user to know they made a error -->
+        <p style="text-align: center;">
+          This page shall not pass!!!!!!!! Please look upon your http for the error!!!
+        </p>
+      </div>
     </div>
 </div>
 
